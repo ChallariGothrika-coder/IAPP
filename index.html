@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>InterviewArena — Your Placement Practice Hub</title>
+<meta name="description" content="Free placement practice: aptitude quizzes, Java and Python questions, HR interview practice and rule-based answer feedback.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand"><span class="logo">IA</span><div><strong>InterviewArena</strong><small>Your Placement Practice Hub</small></div></div>
+    <nav class="nav" aria-label="Main navigation">
+      <button data-view="dashboard">Dashboard</button>
+      <button data-view="aptitude">Aptitude</button>
+      <button data-view="coding">Java &amp; Python</button>
+      <button data-view="hr">HR Practice</button>
+      <button data-view="selfeval">Self-Evaluation</button>
+      <button data-view="bookmarks">Bookmarks <span class="count" id="bm-count">0</span></button>
+      <button data-view="results">Results</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="view" id="v-dashboard">
+    <h1>Dashboard</h1>
+    <p class="muted">Your practice statistics are saved in this browser.</p>
+    <div class="grid stats" id="d-stats"></div>
+    <div class="grid two">
+      <div class="card"><h2>Category progress</h2><div id="d-prog"></div></div>
+      <div class="card"><h2>Recent activity</h2><ul class="acts" id="d-act"></ul></div>
+    </div>
+    <div class="row gap">
+      <button class="btn" data-view="aptitude">Start a quiz</button>
+      <button class="btn ghost" data-view="hr">Practise HR questions</button>
+      <button class="btn danger" id="reset">Reset progress</button>
+    </div>
+  </section>
+
+  <section class="view" id="v-aptitude" hidden>
+    <h1>Aptitude Practice</h1>
+    <div class="card" id="qz-setup">
+      <p class="muted">Each question gets 45 seconds of total quiz time. When the timer reaches zero the quiz is submitted automatically; unanswered questions count as incorrect.</p>
+      <div class="row gap">
+        <label>Category <select id="qz-cat"></select></label>
+        <label>Questions <select id="qz-n"><option value="3">3</option><option value="6" selected>6</option><option value="12">12</option></select></label>
+        <button class="btn" id="qz-start">Start quiz</button>
+      </div>
+      <p class="msg" id="qz-msg" role="alert"></p>
+    </div>
+    <div id="qz-run" hidden></div>
+  </section>
+
+  <section class="view" id="v-coding" hidden>
+    <h1>Java &amp; Python Question Bank</h1>
+    <div class="row gap">
+      <input type="search" id="cd-search" data-live placeholder="Search questions…" aria-label="Search coding questions">
+      <select id="cd-lang" data-live aria-label="Filter by language"><option value="all">All languages</option><option>Java</option><option>Python</option></select>
+    </div>
+    <div class="stack" id="cd-list"></div>
+  </section>
+
+  <section class="view" id="v-hr" hidden>
+    <h1>HR Interview Practice</h1>
+    <p class="muted">Practise aloud first, then open the suggested structure and sample answer.</p>
+    <input type="search" id="hr-search" data-live placeholder="Search HR questions…" aria-label="Search HR questions">
+    <div class="stack" id="hr-list"></div>
+  </section>
+
+  <section class="view" id="v-selfeval" hidden>
+    <h1>Self-Evaluation</h1>
+    <div class="card">
+      <p class="note"><strong>Not AI.</strong> This tool applies simple rules (word count, sentence length, filler words, keyword checks). It cannot judge whether your content is accurate or impressive.</p>
+      <label class="block">Interview question <select id="se-q"></select></label>
+      <label class="block">Your answer <textarea id="se-text" rows="8" placeholder="Type your answer here (15–600 words)…"></textarea></label>
+      <div class="row gap"><button class="btn" id="se-go">Evaluate</button><button class="btn ghost" id="se-clear">Clear</button><small class="muted" id="se-count">0 words</small></div>
+      <p class="msg" id="se-msg" role="alert"></p>
+    </div>
+    <div id="se-out"></div>
+  </section>
+
+  <section class="view" id="v-bookmarks" hidden>
+    <h1>Bookmarks</h1>
+    <div class="row gap">
+      <input type="search" id="bm-search" data-live placeholder="Search bookmarks…" aria-label="Search bookmarks">
+      <select id="bm-type" data-live aria-label="Filter by type"><option value="all">All types</option><option value="aptitude">Aptitude</option><option value="coding">Coding</option><option value="hr">HR</option></select>
+    </div>
+    <div class="stack" id="bm-list"></div>
+  </section>
+
+  <section class="view" id="v-results" hidden>
+    <h1>Results</h1>
+    <div id="rs"></div>
+  </section>
+</main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
